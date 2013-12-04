@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Ga::Cli::VERSION
   spec.authors       = ["Benjamin Falk"]
   spec.email         = ["bn_falk@yahoo.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Google Analytics CLI}
+  spec.summary       = %q{Tool to interact with your Google Analytics from the command line}
+  spec.homepage      = "https://github.com/benfalk/ga-cli"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
