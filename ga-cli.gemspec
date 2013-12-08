@@ -18,6 +18,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  # Cucumber w/ built in step definitions (Acceptance Testing)
+  spec.add_development_dependency "aruba"
+
+  # Unit Testing
+  spec.add_development_dependency "rspec"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 end
