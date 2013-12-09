@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require 'gli'
+
+include GLI::App
+
+program_desc 'Google Analytics'
+
+flag [:authfile], :default_value => File.join(ENV['HOME'],'.ga.auth.yaml')
+
+
+desc 'Checks authentication file'
+command :check do |c|
+  c.action do |global,opts,args|
+    unless File.exists? global[:authfile]
+      STDERR.puts 'Please visit "https://www.google.com" for an auth code'
+      File.open global[:authfile], 'w' do |f|
+        f.puts 'penis'
+      end
+    end
+  end
+end
+
+exit run(ARGV)
+    

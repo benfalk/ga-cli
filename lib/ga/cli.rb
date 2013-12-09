@@ -1,6 +1,7 @@
 require "ga/cli/version"
+require 'oauth2'
 
-module Ga
+module GA
   module Cli
     # Your code goes here...
   end

@@ -5,7 +5,7 @@ require 'ga/cli/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "ga-cli"
-  spec.version       = Ga::Cli::VERSION
+  spec.version       = GA::Cli::VERSION
   spec.authors       = ["Benjamin Falk"]
   spec.email         = ["bn_falk@yahoo.com"]
   spec.description   = %q{Google Analytics CLI}
@@ -17,6 +17,15 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
+
+  # DSL for commandline application functionality
+  spec.add_dependency 'gli'
+
+  # OAuth for the Goog
+  spec.add_dependency 'oauth2'
+
+  # Lib for fetching google analytics
+  spec.add_dependency 'legato'
 
   # Cucumber w/ built in step definitions (Acceptance Testing)
   spec.add_development_dependency "aruba"
