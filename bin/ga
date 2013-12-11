@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'ga/cli'
 require 'gli'
 
 include GLI::App
@@ -13,7 +14,8 @@ desc 'Checks authentication file'
 command :check do |c|
   c.action do |global,opts,args|
     unless File.exists? global[:authfile]
-      STDERR.puts 'Please visit "https://www.google.com" for an auth code'
+      info = GA::Cli::AUTH.verification_information
+      STDERR.puts "Please visit #{info['verification_url']} and use this key: #{info['user_code']}" 
       File.open global[:authfile], 'w' do |f|
         f.puts 'penis'
       end

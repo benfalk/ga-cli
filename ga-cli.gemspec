@@ -24,6 +24,9 @@ Gem::Specification.new do |spec|
   # OAuth for the Goog
   spec.add_dependency 'oauth2'
 
+  # HTTP data transfer
+  spec.add_dependency 'httparty'
+
   # Lib for fetching google analytics
   spec.add_dependency 'legato'
 

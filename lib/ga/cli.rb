@@ -1,8 +1,13 @@
-require "ga/cli/version"
-require 'oauth2'
+require 'ga/authentication'
+require 'ga/cli/version'
 
 module GA
+
+  CLIENT_ID = '907505740513-1upteasr68db0cofvhtb9iho3v38a4bi.apps.googleusercontent.com'
+  SECRET_KEY = '-BlbTszIyqVaLitbAjMb2sq0'
+
   module Cli
-    # Your code goes here...
+    AUTH = Authentication.new client: CLIENT_ID, secret: SECRET_KEY
+
   end
 end
