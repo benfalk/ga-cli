@@ -14,10 +14,10 @@ desc 'Checks authentication file'
 command :check do |c|
   c.action do |global,opts,args|
     unless File.exists? global[:authfile]
-      info = GA::Cli::AUTH.verification_information
-      STDERR.puts "Please visit #{info['verification_url']} and use this key: #{info['user_code']}" 
-      File.open global[:authfile], 'w' do |f|
-        f.puts 'penis'
+      GA::Cli::AUTH.verification_information.tap do |info|
+        authenticator = GA::Authenticator.new(info)
+        STDERR.puts authenticator.authenticate_directions
+        File.open(global[:authfile], 'w'){ |f| f.puts 'fin' }
       end
     end
   end

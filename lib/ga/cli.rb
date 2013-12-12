@@ -1,4 +1,5 @@
 require 'ga/authentication'
+require 'ga/authenticator'
 require 'ga/cli/version'
 
 module GA
