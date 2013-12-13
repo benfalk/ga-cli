@@ -1,5 +1,6 @@
 require 'ga/authentication'
 require 'ga/authenticator'
+require 'ga/token_fetcher'
 require 'ga/cli/version'
 
 module GA

@@ -9,7 +9,7 @@ module GA
       @info = info
     end
 
-    def authenticate_directions
+    def directions
       "Please visit #{info['verification_url']} and use this key: #{info['user_code']}"
     end
 

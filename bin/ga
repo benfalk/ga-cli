@@ -16,7 +16,7 @@ command :check do |c|
     unless File.exists? global[:authfile]
       GA::Cli::AUTH.verification_information.tap do |info|
         authenticator = GA::Authenticator.new(info)
-        STDERR.puts authenticator.authenticate_directions
+        STDERR.puts authenticator.directions
         File.open(global[:authfile], 'w'){ |f| f.puts 'fin' }
       end
     end

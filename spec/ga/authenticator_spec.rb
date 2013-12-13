@@ -13,8 +13,8 @@ module GA
    }}
    let(:authenticator){ GA::Authenticator.new(valid_info) }
 
-   context '#authenticate_directions' do
-     let(:it){ authenticator.authenticate_directions }
+   context '#directions' do
+     let(:it){ authenticator.directions }
 
      it 'should contain the user code' do
        it.should include(user_code)

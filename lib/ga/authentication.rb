@@ -22,6 +22,7 @@ module GA
     def initialize(opts={})
       params = DEFAULT_OPTS.merge opts
       @client = OAuth2::Client.new(params.delete(:client), params.delete(:secret), params)
+      @params = DEFAULT_OPTS.merge opts
     end
 
     def authorize_url
@@ -30,6 +31,13 @@ module GA
 
     def verification_information
       @verification_information ||= JSON.parse http_post(authorize_url)
+    end
+
+    def token_url(device_code)
+      @client.token_url code: device_code,
+                        client_id: @params[:client],
+                        client_secret: @params[:secret],
+                        grant_type: 'http://oauth.net/grant_type/device/1.0'
     end
 
     def http_post(url)
