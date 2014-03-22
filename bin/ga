@@ -15,9 +15,10 @@ command :check do |c|
   c.action do |global,opts,args|
     unless File.exists? global[:authfile]
       GA::Cli::AUTH.verification_information.tap do |info|
-        authenticator = GA::Authenticator.new(info)
+        authenticator = GA::Authenticator.new(info,GA::Cli::AUTH)
         STDERR.puts authenticator.directions
-        File.open(global[:authfile], 'w'){ |f| f.puts 'fin' }
+        auth = authenticator.listen_for_auth
+        File.open(global[:authfile], 'w'){ |f| f.puts auth.to_yaml }
       end
     end
   end

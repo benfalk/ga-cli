@@ -46,21 +46,5 @@ module GA
       end
     end
 
-    describe '#token_url' do
-      let(:device_code){ 'DEVICE_CODE' }
-      let(:it){ auth.token_url(device_code) }
-
-      it 'should contain the device code' do
-        it.should include(device_code)
-      end
-
-      it 'should have a https' do
-        it.should include('https://')
-      end
-
-      it 'should have a grant type' do
-        it.should include('grant_type=')
-      end
-    end
   end
 end
