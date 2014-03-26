@@ -10,9 +10,12 @@ Before do
   FileUtils.rm_rf fake_home, secure: true
   ENV['HOME'] = fake_home
   FileUtils.mkdir ENV['HOME']
+  ENV['GACLI_TEST'] = '1'
 end
 After do
   ENV['HOME'] = @real_home
+  ENV['GACLI_TEST'] = nil
 end
 
 require 'ga/cli'
+

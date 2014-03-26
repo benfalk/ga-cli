@@ -2,6 +2,7 @@
 
 require 'ga/cli'
 require 'gli'
+require 'ga/cli/test' if ENV['GACLI_TEST']
 
 include GLI::App
 
