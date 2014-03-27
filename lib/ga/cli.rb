@@ -1,7 +1,9 @@
 require 'ga/authentication'
 require 'ga/authenticator'
 require 'ga/token_fetcher'
+require 'ga/user'
 require 'ga/cli/version'
+require 'legato'
 
 module GA
   module Cli
