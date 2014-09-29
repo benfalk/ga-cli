@@ -25,5 +25,13 @@ command :check do |c|
   end
 end
 
+desc 'List the websites available'
+command :ls do |c|
+  c.action do |global,opts,args|
+    # TODO: need to handle the token refresh somehow
+    token = YAML.load_file global[:authfile]
+    puts GA::User.new(token).websites
+  end
+end
 exit run(ARGV)
     
