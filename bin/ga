@@ -8,18 +8,17 @@ include GLI::App
 
 program_desc 'Google Analytics'
 
-flag [:authfile], :default_value => File.join(ENV['HOME'],'.ga.auth.yaml')
-
+flag [:authfile], default_value: File.join(ENV['HOME'], '.ga.auth.yaml')
 
 desc 'Checks authentication file'
 command :check do |c|
-  c.action do |global,opts,args|
-    unless File.exists? global[:authfile]
+  c.action do |global, _opts, _args|
+    unless File.exist? global[:authfile]
       GA::Cli::AUTH.verification_information.tap do |info|
-        authenticator = GA::Authenticator.new(info,GA::Cli::AUTH)
+        authenticator = GA::Authenticator.new(info, GA::Cli::AUTH)
         STDERR.puts authenticator.directions
         auth = authenticator.listen_for_auth
-        File.open(global[:authfile], 'w'){ |f| f.puts auth.to_yaml }
+        File.open(global[:authfile], 'w') { |f| f.puts auth.to_yaml }
       end
     end
   end
@@ -27,11 +26,10 @@ end
 
 desc 'List the websites available'
 command :ls do |c|
-  c.action do |global,opts,args|
+  c.action do |global, _opts, _args|
     # TODO: need to handle the token refresh somehow
     token = YAML.load_file global[:authfile]
     puts GA::User.new(token).websites
   end
 end
 exit run(ARGV)
-    

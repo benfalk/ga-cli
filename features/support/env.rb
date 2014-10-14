@@ -6,7 +6,7 @@ require 'fileutils'
 # Sandbox tests home directory
 Before do
   @real_home = ENV['HOME']
-  fake_home = File.join '/tmp','fake_home'
+  fake_home = File.join '/tmp', 'fake_home'
   FileUtils.rm_rf fake_home, secure: true
   ENV['HOME'] = fake_home
   FileUtils.mkdir ENV['HOME']
@@ -18,4 +18,3 @@ After do
 end
 
 require 'ga/cli'
-

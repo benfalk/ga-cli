@@ -2,10 +2,9 @@ require 'httparty'
 
 module GA
   class Authenticator
-
     attr_reader :info, :auth
 
-    def initialize(info,auth)
+    def initialize(info, auth)
       @info = info
       @auth = auth
     end
@@ -31,10 +30,10 @@ module GA
 
     def token_data
       {
-        'client_id'=> auth.client.id,
-        'client_secret'=> auth.client.secret,
-        'grant_type'=> 'http://oauth.net/grant_type/device/1.0',
-        'code'=> info['device_code']
+        'client_id' => auth.client.id,
+        'client_secret' => auth.client.secret,
+        'grant_type' => 'http://oauth.net/grant_type/device/1.0',
+        'code' => info['device_code']
       }
     end
 
@@ -42,9 +41,8 @@ module GA
       'https://accounts.google.com/o/oauth2/token'
     end
 
-    def http_post(url,data={})
-      HTTParty.post(url,body:data).body
+    def http_post(url, data = {})
+      HTTParty.post(url, body: data).body
     end
-
   end
 end

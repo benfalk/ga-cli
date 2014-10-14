@@ -1,0 +1,16 @@
+AllCops:
+  Exclude:
+    - bin/*
+    - features/support/env.rb
+    - lib/tasks/cucumber.rake
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+    - Guardfile
+    - vendor/**/*
+    - spec/dummy/db/schema.rb
+
+LineLength:
+  Max: 110
+
+Documentation:
+  Enabled: false
